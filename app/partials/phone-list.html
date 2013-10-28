@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+
+      Search flickr: <input ng-model="flickrQueryKeyword"/>
+      Search local: <input ng-model="query"/>
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="title">Alphabetical</option>
+        <option value="id">Newest</option>
+      </select>
+      <button ng-click="flickrQuery(flickrQueryKeyword)">Search</button>
+    </div>
+    <div class="span10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="photo in phones | filter:query | orderBy:orderProp" class="thumbnail">
+          <a href="{{photo.title}}" class="thumb"><img ng-src="http://farm{{photo.farm}}.static.flickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg"></a>
+          <a href="{{photo.title}}">{{photo.title}}</a>
+          <p>{{phone.title}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
